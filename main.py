@@ -1,5 +1,35 @@
 import numpy as np
 
+"""
+Diatomic Model for Harmonic Motion
+
+This module provides a class-based representation to model the behavior of a diatomic molecule based on simple harmonic motion principles. 
+
+Classes:
+    - InvalidParameterException: An exception raised for invalid parameters like negative bond length or spring constant.
+    - Diatomic: Represents a diatomic molecule. It models its behavior based on the given parameters: 
+      reduced mass, force constant, initial separation, and initial velocity.
+
+The Diatomic class offers the following features:
+    - Compute potential and kinetic energy of the molecule.
+    - Calculate the angular frequency (omega) of oscillations.
+    - Determine the amplitude of oscillations based on the molecule's energy.
+    - Find the phase constant (phi) for the oscillations.
+    - Predict the position and velocity of the molecule as a function of time using analytical methods.
+
+Example Usage:
+    >>> molecule = Diatomic(reduced_m=1, force_k=1, init_separation=1, init_velocity=0)
+    >>> print(molecule.potential_energy)  # Get the potential energy
+    >>> position_at_t = molecule.analytical_position(0.5)  # Find position at t=0.5 units
+
+Note:
+    Ensure the given parameters like initial separation and spring constant are non-negative; 
+    else, an InvalidParameterException will be raised.
+
+Dependencies:
+    numpy: Used for mathematical operations such as square root, cosine, and sine functions.
+
+"""
 
 # exception for negative bond length:
 class InvalidParameterException(Exception):
