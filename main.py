@@ -2,22 +2,12 @@ import numpy as np
 
 
 # exception for negative bond length:
-class NegativeBondLength(Exception):
+class InvalidParameterException(Exception):
     def __init__(self, value):
         self.value = value
 
     def __str__(self):
         return repr(self.value)
-
-
-# exception for negative spring constant
-class NegativeSpringConstant(Exception):
-    def __init__(self, value):
-        self.value = value
-
-    def __str__(self):
-        return repr(self.value)
-
 
 # define the class Diatomic
 class Diatomic:
@@ -30,10 +20,10 @@ class Diatomic:
         self.init_velocity = init_velocity
 
         if init_separation < 0:
-            raise NegativeBondLength("Bond length cannot be negative")
+            raise InvalidParameterException("Bond length cannot be negative")
 
         if force_k < 0:
-            raise NegativeSpringConstant("Spring constant cannot be negative")
+            raise InvalidParameterException("Spring constant cannot be negative")
 
     # define the potential_energy method
     def potential_energy(self):
